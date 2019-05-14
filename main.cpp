@@ -1,6 +1,11 @@
-#include <iostream>
+#include "listUtils.h"
+#include "selectionSort.h"
 
-using namespace std;
+using std::cout; using std::endl;
+
 int main() {
-    return 0;
+    auto L = readList<int>();
+    cout << L << endl;
+    selectionSort(L);
+    cout << endl;
 }
