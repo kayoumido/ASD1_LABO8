@@ -3,4 +3,4 @@ project(Labo8)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(Labo8 main.cpp fizzy.h fizzy.cpp)
+add_executable(Labo8 main.cpp selectionSort.h forwardListUtils.h)

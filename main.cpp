@@ -1,6 +1,11 @@
-#include <iostream>
+#include "forwardListUtils.h"
+#include "selectionSort.h"
 
-using namespace std;
 int main() {
-    return 0;
+    using namespace std;
+
+    auto L = readForwardList<int>();
+    cout << L << endl;
+    selectionSort(L);
+    cout << endl;
 }
