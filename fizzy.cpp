@@ -13,16 +13,39 @@ void fizzBuzz(std::forward_list<int>& L,
               std::forward_list<int>& FB) {
     assert(F.empty() and B.empty() and FB.empty());
 
-    
-    for (auto it = L.begin(), beforeIt = L.before_begin(); it != L.end(); ++it, ++beforeIt) {
+
+    auto fend  = F.before_begin();
+    auto bend  = B.before_begin();
+    auto fbend = FB.before_begin();
+
+    for (auto it = L.begin(), beforeIt = L.before_begin(); it != L.end(); ++it) {
+
         if ((*it % 3) == 0 && (*it % 5) == 0) {
-            FB.splice_after(FB.before_begin(), L, beforeIt);
+            // move it into FB list
+            FB.splice_after(fbend, L, beforeIt);
+
+            fbend = std::next(fbend);
+
+            // after the splice_after, the it iterator is still pointing
+            //  on the element that was moved. We need to make it point back into
+            //  the list we are fizzbuzzing
+            it = beforeIt;
+
         } else if ((*it % 3) == 0) {
-            F.splice_after(F.before_begin(), L, beforeIt);
+            F.splice_after(fend, L, beforeIt);
+
+            fend = std::next(fend);
+
+            it = beforeIt;
         } else if ((*it % 5) == 0) {
-            B.splice_after(B.before_begin(), L, beforeIt);
+            B.splice_after(bend, L, beforeIt);
+
+            bend = std::next(bend);
+
+            it = beforeIt;
+        } else {
+            ++beforeIt;
         }
     }
-
 
 }
