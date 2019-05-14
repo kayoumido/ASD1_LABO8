@@ -1,6 +1,11 @@
-#include <iostream>
+#include "listUtils.h"
+#include "insertionSort.h"
 
-using namespace std;
 int main() {
-    return 0;
+    using namespace std;
+
+    auto L = readList<int>();
+    cout << L << endl;
+    insertionSort(L);
+    cout << endl;
 }
